@@ -8,7 +8,7 @@ import requests
 from kivy.utils import platform
 from firebase_admin import credentials, auth
 from kivy import Config
-from kivy.core.window import Window
+# from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.metrics import dp
 from kivy.properties import StringProperty, ObjectProperty
@@ -169,7 +169,6 @@ def is_connected():
 class MDCalc(MDApp, CommonApp):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.user_ = None
         self.image_widget = object
         self.sr_no = float
         self.dialog = None
@@ -179,24 +178,16 @@ class MDCalc(MDApp, CommonApp):
         self.ro = float
         self.duty = float
         self.vin = str
-        self.account_drop = None
-        # self.login = None
+        # self.account_drop = None
         self.user = object
         self.screen_manager = MDScreenManager()
         self.label = str
         self.drop = None
         firebase_config = {
-            'apiKey': "AIzaSyACRwxjYJzbNez8CN6zLMlGSdtK34YvStc",
-            'authDomain': "convertercalc-be69f.firebaseapp.com",
-            'databaseURL': 'https://convertercalc-be69f-default-rtdb.firebaseio.com/',
-            'projectId': "convertercalc-be69f",
-            'storageBucket': "convertercalc-be69f.appspot.com",
-            'messagingSenderId': "414380692572",
-            'appId': "1:414380692572:web:67ed4c7ffc2a162cdc0299",
-            'measurementId': "G-YCJ75W4RDZ"
+            # insert firebase configuration here
         }
 
-        cred = credentials.Certificate('firebase_key.json')
+        cred = credentials.Certificate('firebase_key.json')  # add your firebase json key (keep your firebase json key and main.py file in same directory)
         firebase_admin.initialize_app(cred, firebase_config)
         self.auth = auth
         firebase = pyrebase.initialize_app(firebase_config)
@@ -285,7 +276,6 @@ class MDCalc(MDApp, CommonApp):
             self.screen_manager.get_screen('Login').login_screen_manager.get_screen('login').login_email.text = ''
             self.screen_manager.get_screen('Login').login_screen_manager.get_screen('login').login_password.text = ''
             user_[0]['user'] = _user
-            user_[0]['email'] = email
             np.save('user_record.npy', user_)
         except ValueError as err:
             msg_dialog(icon='alert', text_headline='VALUE ERROR!',
@@ -350,11 +340,8 @@ class MDCalc(MDApp, CommonApp):
     #     self.account_drop.open()
 
     def nav_drawer(self):
-        # _user = self.auth.get_user_by_email(self.email)
         user_ = np.load('user_record.npy', allow_pickle=True)
         if user_[0]['user'].photo_url is not None:
-        #     self.screen_manager.get_screen('Main').nav_drawer.profile_img.source = 'https://picsum.photos/id/82/200/300/'
-        # else:
             self.screen_manager.get_screen('Main').nav_drawer.profile_img.source = user_[0]['user'].photo_url
         self.screen_manager.get_screen('Main').nav_drawer.profile_uid.text = user_[0]['user'].uid
 
