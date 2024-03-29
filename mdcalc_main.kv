@@ -1,0 +1,397 @@
+<MDTextField>:
+    mode: 'filled'
+    theme_bg_color: "Custom"
+    fill_color_normal: "skyblue"
+    fill_color_focus: [10/255, 68/255, 97/255, 1]
+    theme_text_color: 'Custom'
+    text_color_normal: 'ghostwhite'
+    text_color_focus: 'white' # rgba(100,100,100,255)
+    theme_line_color: "Custom"
+    line_color_normal: 'darkgray'#'ghostwhite'
+    line_color_focus: "white"
+    size_hint_x: 1
+
+<BaseMDNavigationItem>
+
+    MDNavigationItemIcon:
+        icon: root.icon
+
+    MDNavigationItemLabel:
+        text: root.text
+
+<BaseScreen1>:
+    name: 'Calculator'
+    md_bg_color: app.theme_cls.secondaryContainerColor
+    spinner_id: spinner_id
+    ip_vtg: ip_vtg
+    op_vtg: op_vtg
+    op_resistance: op_resistance
+    freq: freq
+    ip_rip_i: ip_rip_i
+    op_rip_v: op_rip_v
+    label: label
+
+    MDScrollView:
+        id: scroll
+        pos_hint: {'top': 1}
+        size_hint_y: 0.9
+
+        MDBoxLayout:
+            id: box
+            orientation: 'vertical'
+            padding: '12dp'
+            spacing: '60dp'
+            size_hint_y: None
+            height: self.minimum_height
+            adaptive_height: True
+
+            MDBoxLayout:
+                orientation: 'vertical'
+#                padding: '12dp'
+                spacing: '30dp'
+                size_hint_y: None
+                height: self.minimum_height
+                adaptive_height: True
+
+                MDButton:
+                    text: text
+                    id: spinner_id
+                    style: 'filled'
+                    pos_hint: {'center_x': .5}
+                    on_press: app.drop_menu()
+                    theme_bg_color: 'Primary'
+                    MDButtonText:
+                        id: text
+                        text: 'Select Converter Type'
+                        theme_text_color: 'Custom'
+                        text_color: 'white'
+
+                MDTextField:
+                    id: ip_vtg
+                    input_filter: 'float'
+                    on_text_validate: op_vtg.focus = True
+                    MDTextFieldLeadingIcon:
+                        icon: 'pencil'
+                        theme_icon_color: 'Custom'
+                        icon_color_normal: 'darkgray'#'ghostwhite'
+                        icon_color_focus: 'white'
+                    MDTextFieldHintText:
+                        text: 'Input Voltage (Vin)'
+                        text_color_normal: 'darkgray'#'ghostwhite'
+                        text_color_focus: 'white'
+                    MDTextFieldHelperText:
+                        text: 'Enter input voltage. Only float values.'
+                        mode: "persistent"
+                        text_color_normal: 'darkgray'#'ghostwhite'
+                        text_color_focus: 'white'
+
+                MDTextField:
+                    id: op_vtg
+                    input_filter: 'float'
+                    on_text_validate: op_resistance.focus = True
+                    MDTextFieldLeadingIcon:
+                        icon: 'pencil'
+                        theme_icon_color: 'Custom'
+                        icon_color_normal: 'darkgray'#'ghostwhite'
+                        icon_color_focus: 'white'
+                    MDTextFieldHintText:
+                        text: 'Output Voltage (Vo)'
+                        text_color_normal: 'darkgray'#'ghostwhite'
+                        text_color_focus: 'white'
+                    MDTextFieldHelperText:
+                        text: 'Enter output voltage. Only float values.'
+                        mode: "persistent"
+                        text_color_normal: 'darkgray'#'ghostwhite'
+                        text_color_focus: 'white'
+
+                MDTextField:
+                    id: op_resistance
+                    input_filter: 'float'
+                    on_text_validate: freq.focus = True
+                    MDTextFieldLeadingIcon:
+                        icon: 'pencil'
+                        theme_icon_color: 'Custom'
+                        icon_color_normal: 'darkgray'#'ghostwhite'
+                        icon_color_focus: 'white'
+                    MDTextFieldHintText:
+                        text: 'Output Resistance (Ro)'
+                        text_color_normal: 'darkgray'#'ghostwhite'
+                        text_color_focus: 'white'
+                    MDTextFieldHelperText:
+                        text: 'Enter output resistance. Only float values.'
+                        mode: "persistent"
+                        text_color_normal: 'darkgray'#'ghostwhite'
+                        text_color_focus: 'white'
+
+                MDTextField:
+                    id: freq
+                    input_filter: 'float'
+                    on_text_validate: ip_rip_i.focus = True
+                    MDTextFieldLeadingIcon:
+                        icon: 'pencil'
+                        theme_icon_color: 'Custom'
+                        icon_color_normal: 'darkgray'#'ghostwhite'
+                        icon_color_focus: 'white'
+                    MDTextFieldHintText:
+                        text: 'Frequency(f) (in Hz)'
+                        text_color_normal: 'darkgray'#'ghostwhite'
+                        text_color_focus: 'white'
+                    MDTextFieldHelperText:
+                        text: 'Enter frequency in hertz. Only float values.'
+                        mode: "persistent"
+                        text_color_normal: 'darkgray'#'ghostwhite'
+                        text_color_focus: 'white'
+
+                MDTextField:
+                    id: ip_rip_i
+                    input_filter: 'float'
+                    on_text_validate: op_rip_v.focus = True
+                    MDTextFieldLeadingIcon:
+                        icon: 'pencil'
+                        theme_icon_color: 'Custom'
+                        icon_color_normal: 'darkgray'#'ghostwhite'
+                        icon_color_focus: 'white'
+                    MDTextFieldHintText:
+                        text: 'Percentage i/p Ripple Current(Ir)(optional)'
+                        text_color_normal: 'darkgray'#'ghostwhite'
+                        text_color_focus: 'white'
+                    MDTextFieldHelperText:
+                        text: 'Enter % output ripple current. Only float values. Eg.: 40'
+                        mode: "persistent"
+                        text_color_normal: 'darkgray'#'ghostwhite'
+                        text_color_focus: 'white'
+
+                MDTextField:
+                    id: op_rip_v
+                    input_filter: 'float'
+                    MDTextFieldLeadingIcon:
+                        icon: 'pencil'
+                        theme_icon_color: 'Custom'
+                        icon_color_normal: 'darkgray'#'ghostwhite'
+                        icon_color_focus: 'white'
+                    MDTextFieldHintText:
+                        text: 'Percentage o/p Ripple Voltage(Vr)'
+                        text_color_normal: 'darkgray'#'ghostwhite'
+                        text_color_focus: 'white'
+                    MDTextFieldHelperText:
+                        text: 'Enter % output ripple voltage. Only float values. Eg.: 3'
+                        mode: "persistent"
+                        text_color_normal: 'darkgray'#'ghostwhite'
+                        text_color_focus: 'white'
+
+                MDGridLayout:
+                    rows: 1
+                    cols: 2
+                    spacing: 50
+
+                    MDButton:
+                        style: 'elevated'
+                        on_press: app.calculate()
+                        theme_bg_color: 'Custom'
+                        md_bg_color: 'green'
+                        MDButtonIcon:
+                            icon: "pencil"
+                            theme_icon_color: 'Custom'
+                            icon_color: 'white'
+                        MDButtonText:
+                            text: "Calculate"
+                            theme_text_color: 'Custom'
+                            text_color: 'white'
+
+                    MDButton:
+                        style: 'elevated'
+                        on_press: app.clear()
+                        theme_bg_color: 'Custom'
+                        md_bg_color: 'red'
+                        MDButtonIcon:
+                            icon: "eraser"
+                            theme_icon_color: 'Custom'
+                            icon_color: 'white'
+                        MDButtonText:
+                            text: "Clear"
+                            theme_text_color: 'Custom'
+                            text_color: 'white'
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                adaptive_height: True
+
+                MDCard:
+                    style: 'elevated'
+                    size_hint_y: None
+                    height: label.height + 5
+                    theme_bg_color: 'Custom'
+                    md_bg_color: [10/255, 68/255, 97/255, 1]
+                    elevation: 10
+
+                    MDLabel:
+                        id: label
+                        text:
+                            "Converter Parameters:\n  Duty Cycle = 0.0\n  Power Input = 0.0W\n  Power Output = 0.0W\n"\
+                            "  Output Current = 0.0Amp\n  Inductor Current = 0.0Amp\n  Input Current = 0.0Amp\n"\
+                            "  Ripple Current = 0.0Amp\n  Critical Inductance(Lcr) = 0.0H\n"\
+                            "  Inductance(L) as per calculated ripple current = 0.0H\n  Ripple Current due to Lcr = 0.0Amp\n"\
+                            "  Maximum inductor ripple current = 0.0Amp\n  Minimum inductor ripple current = 0.0Amp\n"\
+                            "  Output Capacitor = 0.0F\n  Capacitor ESR = 0.0Ohms"
+                        theme_text_color: 'Custom'
+                        text_color: 'white'
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        padding: 15
+
+<BaseScreen2>:
+    name: 'History'
+    md_bg_color: app.theme_cls.secondaryContainerColor
+    card_list: card_list
+
+    MDCard:
+        style: 'elevated'
+        orientation: 'vertical'
+        theme_bg_color: 'Custom'
+        md_bg_color: [135/255, 206/255, 235/255, 0.35]
+        size_hint_y: 0.8
+        pos_hint: {'top': 1}
+
+        MDScrollView:
+            id: scroll
+            size_hint_y: 0.98
+            MDList:
+                id: card_list
+                padding: '10dp'
+                spacing: '15dp'
+
+    MDExtendedFabButton:
+        fab_state: 'expand'
+        on_release: app.delete_all()
+        pos_hint: {'center_x':0.5, 'center_y':0.16}
+        MDExtendedFabButtonIcon:
+            icon: 'delete'
+        MDExtendedFabButtonText:
+            text: 'Delete All'
+
+<MainScreen>:
+    name: 'main'
+    main_manager: main_manager
+
+    MDScreenManager:
+        id: main_manager
+        current: 'Calculator'
+        BaseScreen1:
+        BaseScreen2
+
+    MDNavigationBar:
+        on_switch_tabs: app.on_switch_tabs(*args)
+
+        BaseMDNavigationItem
+            icon: "calculator"
+            text: "Calculator"
+            active: True
+
+        BaseMDNavigationItem
+            icon: "history"
+            text: "History"
+
+MDScreen:
+    account_btn: account_btn
+    menu_btn: menu_btn
+    kv_screen_manager: kv_screen_manager
+    profile_img: profile_img
+    profile_uid: profile_uid
+    drawer_header: drawer_header
+    nav_drawer: nav_drawer
+    name: 'Main'
+
+    MDGridLayout:
+        account_btn: account_btn
+        kv_screen_manager: kv_screen_manager
+        id: box
+        cols: 1
+
+        MDTopAppBar:
+            type: "small"
+            set_bars_color: True
+
+            MDTopAppBarLeadingButtonContainer:
+                MDActionTopAppBarButton:
+                    id: menu_btn
+                    icon: "menu"
+                    on_release:
+                        app.nav_drawer()
+                        nav_drawer.set_state('toggle')
+#                    on_release: app.appbar_drop()
+
+            MDTopAppBarTitle:
+                text: "MDConverterCalc"
+                pos_hint: {"center_x": 0.5}
+
+            MDTopAppBarTrailingButtonContainer:
+                MDActionTopAppBarButton:
+                    id: account_btn
+                    icon: "weather-sunny"
+#                    on_release: app.topbar_dropdown()
+                    on_release: app.open_menu(self)
+
+        MDNavigationLayout:
+
+            MDScreenManager:
+                id: kv_screen_manager
+                drawer_header: drawer_header
+                current: 'main'
+                MainScreen:
+
+            MDNavigationDrawer:
+                profile_img: profile_img
+                profile_uid: profile_uid
+                id: nav_drawer
+                radius: 0, '16dp', '16dp', 0
+
+                MDNavigationDrawerMenu:
+
+                    MDNavigationDrawerHeader:
+                        id: drawer_header
+                        # padding: '10dp', 0, '10dp', '10dp'
+                        # spacing: '10dp'
+                        profile_img: profile_img
+                        profile_uid: profile_uid
+
+                        FitImage:
+                            id: profile_img
+                            source: 'assets/profile_img.jpg'
+                            # size_hint: 0.5, 0.5
+                            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                        MDLabel:
+                            id: profile_uid
+                            text: ''
+                            font_style: 'Display'
+                            role: 'medium'
+                            adaptive_height: True
+                            pos_hint: {'center_y':0.5}
+
+                    MDNavigationDrawerItem:
+                        on_release: app.account_logout()
+
+                        MDNavigationDrawerItemLeadingIcon:
+                            icon: 'logout'
+
+                        MDNavigationDrawerItemText:
+                            text: 'Logout'
+
+                    MDNavigationDrawerItem:
+                        on_release: app.account_del()
+
+                        MDNavigationDrawerItemLeadingIcon:
+                            icon: 'account-cancel'
+
+                        MDNavigationDrawerItemText:
+                            text: 'Delete Account'
+
+                    MDNavigationDrawerItem:
+                        on_release: app.app_exit()
+
+                        MDNavigationDrawerItemLeadingIcon:
+                            icon: 'exit-to-app'
+
+                        MDNavigationDrawerItemText:
+                            text: 'Exit'

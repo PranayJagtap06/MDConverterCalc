@@ -1,0 +1,28 @@
+MDScreen:
+    name: 'Plot'
+    md_bg_color: app.theme_cls.secondaryContainerColor
+    size: root.width, root.height
+
+    MDFloatLayout:
+
+        MDIconButton:
+            icon: 'arrow-left'
+            style: 'filled'
+            pos_hint: {'center_x': .07, 'center_y': .95}
+            user_font_size: '30sp'
+            theme_bg_color: 'Custom'
+            md_bg_color: 'white'
+            theme_icon_color: 'Custom'
+            icon_color: 'blue'
+            on_release:
+                app.screen_manager.transition.direction = 'right'
+                app.screen_manager.current = 'Main'
+
+        MDButton:
+            style: 'elevated'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.1}
+            on_release: app.save_image()
+            MDButtonText:
+                text: 'Save Image'
+            MDButtonIcon:
+                icon: 'content-save'

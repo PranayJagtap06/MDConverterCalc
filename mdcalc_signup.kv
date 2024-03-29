@@ -1,0 +1,130 @@
+<MDTextField>:
+    mode: 'filled'
+    theme_bg_color: 'Custom'
+    font_style: 'Body'
+    role: 'medium'
+    fill_color_focus: 'seagreen'
+    theme_text_color: 'Custom'
+    text_color_focus: 'white'
+    theme_line_color: 'Custom'
+    line_color_normal: 'seagreen'
+    line_color_focus: 'white'
+    size_hint_x: .8
+
+MDScreen:
+    signup_email: signup_email
+    name: 'Signup'
+    md_bg_color: self.theme_cls.backgroundColor
+    size: root.width, root.height
+    MDFloatLayout:
+#        FitImage:
+#            source: "assets/signup.jpg"
+#            size_hint: .65, .4
+#            pos_hint: {"top": .75, "center_x":.5}
+#            radius: "5dp", "5dp", "5dp", "5dp"
+        MDCard:
+            style: 'elevated'
+            orientation: 'vertical'
+            theme_shadow_color: 'Custom'
+            shadow_color: 'green'
+            theme_bg_color: 'Custom'
+            md_bg_color: 'white'
+            theme_shadow_offset: 'Custom'
+            shadow_offset: (1, -2)
+            theme_focus_color: 'Custom'
+            focus_color: [0, 1, 0, .1]
+            theme_shadow_softness: 'Custom'
+            shadow_softness: 1
+            theme_elevation_level: 'Custom'
+            elevation_level: 2
+            size_hint: None, None
+            size: 500, 500
+            pos_hint: {'center_x': .5, 'center_y': .6}
+            spacing: 30
+            padding: 10
+            MDLabel:
+                text: 'Create Account'
+                font_style: 'Title'
+                role: 'large'
+                halign: 'center'
+                bold: True
+                size_hint_y: None
+                height: self.texture_size[1]
+                padding: 5
+            MDTextField:
+                id: username
+                pos_hint: {'center_x': .5, 'center_y': .77}
+                MDTextFieldLeadingIcon:
+                    icon: 'account'
+                    theme_icon_color: 'Custom'
+                    icon_color_focus: 'white'
+                MDTextFieldHintText:
+                    text: 'Username (uid)'
+                    text_color_focus: 'white'
+                MDTextFieldHelperText:
+                    text: 'Enter your username.'
+                    mode: "on_focus"
+                    text_color_focus: 'seagreen'
+            MDTextField:
+                id: signup_email
+                pos_hint: {'center_x': .5, 'center_y': .67}
+                MDTextFieldLeadingIcon:
+                    icon: 'email'
+                    theme_icon_color: 'Custom'
+                    icon_color_focus: 'white'
+                MDTextFieldHintText:
+                    text: 'Email'
+                    text_color_focus: 'white'
+                MDTextFieldHelperText:
+                    text: 'Enter your email.'
+                    mode: "on_focus"
+                    text_color_focus: 'seagreen'
+            MDTextField:
+                id: signup_password
+                pos_hint: {'center_x': .5, 'center_y': .57}
+                password: True
+                MDTextFieldLeadingIcon:
+                    icon: 'key-variant'
+                    theme_icon_color: 'Custom'
+                    icon_color_focus: 'white'
+                MDTextFieldHintText:
+                    text: 'Password'
+                    text_color_focus: 'white'
+                MDTextFieldHelperText:
+                    text: 'Enter your password.'
+                    mode: "on_focus"
+                    text_color_focus: 'seagreen'
+            MDButton:
+                style: 'filled'
+                theme_bg_color: 'Custom'
+                md_bg_color: 'seagreen'
+                pos_hint: {'center_x': .5, 'center_y': .4}
+                on_release: app.create_account(username.text, signup_email.text, signup_password.text)
+                MDButtonText:
+                    text: 'SIGNUP'
+                    theme_text_color: 'Custom'
+                    text_color: 'white'
+            Widget:
+                size_hint_y: None
+                height: 5
+        MDLabel:
+            text: 'Already have an account?'
+            font_style: 'Body'
+            role: 'medium'
+            theme_text_color: 'Custom'
+            text_color: rgba(100,100,100,255)
+            size_hint_y: None
+            height: self.texture_size[1]
+            pos_hint: {'center_x': .6, 'center_y': .27}
+        MDButton:
+            style: 'text'
+            pos_hint: {'center_x': .51, 'center_y': .27}
+            on_release:
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'Login'
+            MDButtonText:
+                text: 'LOGIN'
+                font_style: 'Body'
+                role: 'medium'
+                theme_text_color: 'Custom'
+                text_color: 'blue'

@@ -1,0 +1,227 @@
+<MDTextField>:
+    mode: 'filled'
+    theme_bg_color: 'Custom'
+    font_style: 'Body'
+    role: 'medium'
+    fill_color_focus: [10/255, 68/255, 97/255, 1]
+    theme_text_color: 'Custom'
+    text_color_focus: 'white'
+    theme_line_color: 'Custom'
+    line_color_normal: [10/255, 68/255, 97/255, 1]
+    line_color_focus: 'white'
+    size_hint_x: .8
+
+<LoginScreen>:
+    name: 'login'
+    md_bg_color: self.theme_cls.backgroundColor
+    login_email: login_email
+    login_password: login_password
+    MDFloatLayout:
+        MDCard:
+            style: 'elevated'
+            orientation: 'vertical'
+            theme_shadow_color: 'Custom'
+            shadow_color: 'blue'
+            theme_bg_color: 'Custom'
+            md_bg_color: 'white'
+            theme_shadow_offset: 'Custom'
+            shadow_offset: (1, -2)
+            theme_focus_color: 'Custom'
+            focus_color: [0, 0, 1, .1]
+            theme_shadow_softness: 'Custom'
+            shadow_softness: 1
+            theme_elevation_level: 'Custom'
+            elevation_level: 2
+            size_hint: None, None
+            size: 500, 400
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            spacing: 30
+            padding: 10
+            MDLabel:
+                text: 'LOGIN'
+                font_style: 'Title'
+                role: 'large'
+                halign: 'center'
+                bold: True
+                size_hint_y: None
+                height: self.texture_size[1]
+                padding: 5
+            MDTextField:
+                id: login_email
+                pos_hint: {'center_x': .5, 'center_y': .77}
+                MDTextFieldLeadingIcon:
+                    icon: 'email'
+                    theme_icon_color: 'Custom'
+                    icon_color_focus: 'white'
+                MDTextFieldHintText:
+                    text: 'Email'
+                    text_color_focus: 'white'
+                MDTextFieldHelperText:
+                    text: 'Enter your email.'
+                    mode: "on_focus"
+                    text_color_focus: [10/255, 68/255, 97/255, 1]
+            MDTextField:
+                id: login_password
+                pos_hint: {'center_x': .5, 'center_y': .67}
+                password: True
+                MDTextFieldLeadingIcon:
+                    icon: 'key-variant'
+                    theme_icon_color: 'Custom'
+                    icon_color_focus: 'white'
+                MDTextFieldHintText:
+                    text: 'Password'
+                    text_color_focus: 'white'
+                MDTextFieldHelperText:
+                    text: 'Enter your password.'
+                    mode: "on_focus"
+                    text_color_focus: [10/255, 68/255, 97/255, 1]
+            MDButton:
+                style: 'filled'
+                theme_bg_color: 'Custom'
+                md_bg_color: [10/255, 68/255, 97/255, 1]
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                on_release: app.login_user(login_email.text, login_password.text)
+                MDButtonText:
+                    text: 'LOGIN'
+                    theme_text_color: 'Custom'
+                    text_color: 'white'
+            Widget:
+                size_hint_y: None
+                height: 5
+        MDButton:
+            style: 'text'
+            pos_hint: {'center_x': .25, 'center_y': .25}
+            on_release:
+                root.manager.transition.direction = 'left'
+                root.manager.current = 'password_reset'
+            MDButtonText:
+                text: 'Forgot password?'
+                font_style: 'Body'
+                role: 'medium'
+                theme_text_color: 'Custom'
+                text_color: 'blue'
+        MDLabel:
+            text: 'Create a new account?'
+            font_style: 'Body'
+            role: 'medium'
+            theme_text_color: 'Custom'
+            text_color: rgba(100,100,100,255)
+            size_hint_y: None
+            height: self.texture_size[1]
+            pos_hint: {'center_x': .6, 'center_y': .20}
+        MDButton:
+            style: 'text'
+            pos_hint: {'center_x': .49, 'center_y': .20}
+            on_release:
+                app.screen_manager.transition.direction = 'right'
+                app.screen_manager.current = 'Signup'
+            MDButtonText:
+                text: 'SIGNUP'
+                font_style: 'Body'
+                role: 'medium'
+                theme_text_color: 'Custom'
+                text_color: 'blue'
+
+<PasswordResetScreen>:
+    name: 'password_reset'
+    md_bg_color: self.theme_cls.backgroundColor
+    MDFloatLayout:
+        MDIconButton:
+            icon: 'arrow-left'
+            style: 'filled'
+            pos_hint: {'center_x': .07, 'center_y': .95}
+            user_font_size: '30sp'
+            theme_bg_color: 'Custom'
+            md_bg_color: 'white'
+            theme_icon_color: 'Custom'
+            icon_color: 'blue'
+            on_release:
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'login'
+        MDCard:
+            style: 'elevated'
+            orientation: 'vertical'
+            theme_shadow_color: 'Custom'
+            shadow_color: 'red'
+            theme_bg_color: 'Custom'
+            md_bg_color: 'white'
+            theme_shadow_offset: 'Custom'
+            shadow_offset: (1, -2)
+            theme_focus_color: 'Custom'
+            focus_color: [1, 0, 0, .05]
+            theme_shadow_softness: 'Custom'
+            shadow_softness: 1
+            theme_elevation_level: 'Custom'
+            elevation_level: 2
+            size_hint: None, None
+            size: 500, 400
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            spacing: 30
+            padding: 10
+            MDLabel:
+                text: 'Reset Password'
+                font_style: 'Title'
+                role: 'large'
+                halign: 'center'
+                bold: True
+                size_hint_y: None
+                height: self.texture_size[1]
+                padding: 5
+            MDLabel:
+                text: 'Send a password reset link to your email.'
+                font_style: 'Body'
+                role: 'medium'
+                halign: 'center'
+                size_hint_y: None
+                height: self.texture_size[1]
+                padding: 5
+            MDTextField:
+                id: reset_email
+                mode: 'filled'
+                theme_bg_color: 'Custom'
+                font_style: 'Body'
+                role: 'medium'
+                fill_color_focus: [10/255, 68/255, 97/255, 1]
+                theme_text_color: 'Custom'
+                text_color_focus: 'white'
+                theme_line_color: 'Custom'
+                line_color_normal: [10/255, 68/255, 97/255, 1]
+                line_color_focus: 'white'
+                size_hint_x: .8
+                pos_hint: {'center_x': .5, 'center_y': .77}
+                MDTextFieldLeadingIcon:
+                    icon: 'email'
+                    theme_icon_color: 'Custom'
+                    icon_color_focus: 'white'
+                MDTextFieldHintText:
+                    text: 'Email'
+                    text_color_focus: 'white'
+                MDTextFieldHelperText:
+                    text: 'Enter your email.'
+                    mode: "on_focus"
+                    text_color_focus: [10/255, 68/255, 97/255, 1]
+            MDButton:
+                style: 'filled'
+                theme_bg_color: 'Custom'
+                md_bg_color: [10/255, 68/255, 97/255, 1]
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                on_release: app.reset_password(reset_email.text)
+                MDButtonText:
+                    text: 'SEND'
+                    theme_text_color: 'Custom'
+                    text_color: 'white'
+            Widget:
+                size_hint_y: None
+                height: 30
+
+MDScreen:
+    login_screen_manager: login_screen_manager
+    name: 'Login'
+    size: root.width, root.height
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDScreenManager:
+            id: login_screen_manager
+            current: 'login'
+            LoginScreen:
+            PasswordResetScreen:

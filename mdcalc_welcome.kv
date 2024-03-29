@@ -1,0 +1,67 @@
+MDScreen:
+    name: 'Welcome'
+    md_bg_color: self.theme_cls.backgroundColor
+    size: root.width, root.height
+    MDFloatLayout:
+        FitImage:
+            source: "assets/calc_logo1.png"
+            size_hint: .15, .10
+            pos_hint: {"top": 1, "center_x":.10}
+            radius: "5dp", "5dp", "5dp", "5dp"
+        MDLabel:
+            text: 'ConverterCalc'
+            font_style: 'Display'
+            role: 'medium'
+            bold: True
+            size_hint_y: None
+            height: self.texture_size[1]
+            pos_hint: {'center_x': 0.68, 'top': .99}
+        MDLabel:
+            text: "'One stop solution to find all converter specifications!\nAll at once'"
+            halign: 'center'
+            theme_text_color: 'Custom'
+            text_color: rgba(150,150,150,255)
+            font_style: 'Title'
+            role: 'medium'
+            italic: True
+            size_hint_y: None
+            height: self.texture_size[1]
+            pos_hint: {'center_x': 0.5, 'top': .85}
+        FitImage:
+            source: "assets/convertercalc_welcome.png"
+            size_hint: 1, .7
+            pos_hint: {"center_y": .5, "center_x":.5}
+            radius: "5dp", "5dp", "5dp", "5dp"
+        MDButton:
+            style: 'filled'
+            theme_bg_color: 'Primary'
+            radius: [5, 5, 5, 5]
+            pos_hint: {'center_x': .5, 'center_y': .15}
+            on_release:
+                root.manager.transition.direction = 'left'
+                root.manager.current = 'Login'
+            MDButtonText:
+                text: 'LOGIN'
+                theme_text_color: 'Custom'
+                text_color: 'ghostwhite'
+        MDLabel:
+            text: "Don't have an account?"
+            theme_text_color: 'Custom'
+            text_color: rgba(100,100,100,255)
+            font_style: 'Body'
+            role: 'medium'
+            size_hint_y: None
+            height: self.texture_size[1]
+            pos_hint: {'center_x': 0.75, 'top': .1}
+        MDButton:
+            style: 'text'
+            pos_hint: {'center_x': .65, 'center_y': .09}
+            on_release:
+                root.manager.transition.direction = 'left'
+                root.manager.current = 'Signup'
+            MDButtonText:
+                text: 'SIGNUP'
+                font_style: 'Body'
+                role: 'medium'
+                theme_text_color: 'Custom'
+                text_color: 'blue'
