@@ -230,7 +230,7 @@ class MDCalc(MDApp, CommonApp):
             if not is_connected():
                 raise Exception("No internet connection")
 
-            status = EmailListVerifyOne('nkxtjHv9DOCM4UfEaY1Wp', email)
+            status = EmailListVerifyOne('''enter emaillistverify api key here''', email)
             result = status.control()
             if result == 'ok':
                 self.auth.create_user(uid=username, email=email, password=password)
@@ -368,7 +368,7 @@ class MDCalc(MDApp, CommonApp):
             if not is_connected():
                 raise Exception("No internet connection")
 
-            status = EmailListVerifyOne('nkxtjHv9DOCM4UfEaY1Wp', email)
+            status = EmailListVerifyOne('''enter emaillistverify api key here''', email)
             result = status.control()
             if result == 'ok':  # Check if the email is valid
                 try:
