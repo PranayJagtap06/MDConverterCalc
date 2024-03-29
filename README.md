@@ -69,3 +69,7 @@ Here's how you should use you firebaseConfig and firebase json key:
 
 https://github.com/PranayJagtap06/MDConverterCalc/assets/66717457/974174bd-35c4-4d16-868a-ca5f34f98ecd
 
+![1BuckResponseVin12D0 417](https://github.com/PranayJagtap06/MDConverterCalc/assets/66717457/f94b99d2-53db-4be2-a0d2-0af9061fb0f7)
+
+
+![1BoostResponseVin12D0 75](https://github.com/PranayJagtap06/MDConverterCalc/assets/66717457/71829ead-3f12-4343-a66f-6158cedd1326)
