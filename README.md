@@ -64,7 +64,8 @@ Here's how you should use you firebaseConfig and firebase json key:
     firebase_admin.initialize_app(cred, firebase_config)
 
 >[!WARNING]
->The firebase_config variable stores a dictionary containing the keys and identifiers for your app, since it is a dictionary the keys needs to be in double qoutes.
+> - The firebase_config variable stores a dictionary containing the keys and identifiers for your app, since it is a dictionary the keys needs to be in double qoutes.
+> - Also there is small bug in the app. To delete a single entry in `History` tab you need to hold and swipe right on the respective entry. When done so it does delete the entry but in response it also opens the corresponding entry's content in dailog box. This is an undesirable behaviour of the app.
 
 
 https://github.com/PranayJagtap06/MDConverterCalc/assets/66717457/974174bd-35c4-4d16-868a-ca5f34f98ecd
